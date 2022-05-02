@@ -1,5 +1,8 @@
 pipeline {
-
+    environment {
+    registry = "748376254287.dkr.ecr.us-east-1.amazonaws.com/repo"
+    registryCredential = ‘jenkins-aws-beanstalk’
+}
     agent any
 
     stages {
@@ -16,16 +19,10 @@ pipeline {
                 script {
                     docker.withRegistry("748376254287.dkr.ecr.us-east-1.amazonaws.com", "jenkins-aws-beanstalk",
                     "ecr:us-east-1:jenkins-aws-beanstalk") {
-                        def myImage = docker.build(repo)
-                        myImage.push(":$BUILD_NUMBER")
+                        docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push(":$BUILD_NUMBER")
                     }
-                }
-                 
-            }
-        }
-        stage('Upload Image to ECR') {
-            steps {
-                echo 'Deploying....'
+                }                
             }
         }
     }
