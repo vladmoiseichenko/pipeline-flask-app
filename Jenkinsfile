@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo echo '############### dockerImage'
+                echo '############### dockerImage'
             }
         }
         stage('Deploy') {
