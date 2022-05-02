@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo ${dockerImage}
+                echo 'asd'
             }
         }
         stage('Deploy') {
