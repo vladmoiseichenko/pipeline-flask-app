@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("748376254287.dkr.ecr.us-east-1.amazonaws.com", "jenkins-aws-beanstalk",
-                    ecr:us-east-1:jenkins-aws-beanstalk) {
+                    ecr:us-east-1::"jenkins-aws-beanstalk") {
                         def myImage = docker.build(repo)
                         myImage.push(":$BUILD_NUMBER")
                     }
