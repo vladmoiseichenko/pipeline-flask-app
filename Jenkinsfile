@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        repo_url = "748376254287.dkr.ecr.us-east-1.amazonaws.com/repo"
+    }
     
     agent any
 
@@ -13,14 +16,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo '############### dockerImage'
+                echo ${dockerImage}
             }
         }
         stage('Deploy') {
             steps {
                 script {
                     docker.withRegistry("${repo_url}", 'ecr:us-east-1:jenkins-aws-beanstalk') {
-                        dockerImage.push()
+                        dockerImage.push("$BUILD_NUMBER")
                     }
                 }
             }
