@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        repo_url = "748376254287.dkr.ecr.us-east-1.amazonaws.com/repo"
+        repo_url = "https://748376254287.dkr.ecr.us-east-1.amazonaws.com/repo"
     }
     
     agent any
