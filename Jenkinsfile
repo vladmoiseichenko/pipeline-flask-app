@@ -2,9 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Create docker image') {
             steps {
-                echo 'Building..'
+                echo 'Creating..'
+                dir . {
+                    sh 'docker build -t hello-app .'
+                }
             }
         }
         stage('Test') {
