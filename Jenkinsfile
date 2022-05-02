@@ -7,14 +7,13 @@ pipeline {
             steps {
                 echo 'Creating..'
                 script {
-                    dockerImage = docker.build "app" + ":$BUILD_NUMBER",
-                    echo "############### dockerImage"
+                    dockerImage = docker.build "app" + ":$BUILD_NUMBER"
                 }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo echo '############### dockerImage'
             }
         }
         stage('Deploy') {
