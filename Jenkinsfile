@@ -8,7 +8,7 @@ pipeline {
                 echo 'Creating..'
                 script {
                     dockerImage = docker.build "app" + ":$BUILD_NUMBER",
-                    echo ############### dockerImage
+                    echo "############### dockerImage"
                 }
             }
         }
