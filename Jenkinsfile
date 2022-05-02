@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "748376254287.dkr.ecr.us-east-1.amazonaws.com/repo"
-    registryCredential = "jenkins-aws-beanstalk"
+    registryCredential = "AKIA24PVTM5HRZ665RX7"
   }
   agent any
 
