@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Creating..'
                 script {
-                    dockerImage = docker.build "vladmoiseichenko/pipeline-flask-app" + ":$BUILD_NUMBER"
+                    dockerImage = docker.build "hello-app" + ":$BUILD_NUMBER"
                 }
             }
         }
