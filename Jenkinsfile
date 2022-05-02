@@ -5,9 +5,7 @@ pipeline {
         stage('Create docker image') {
             steps {
                 echo 'Creating..'
-                dir . {
-                    sh 'docker build -t hello-app .'
-                }
+                app = docker.build("vladmoiseichenko/pipeline-flask-app")
             }
         }
         stage('Test') {
