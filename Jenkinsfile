@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("${repo_url}", 'ecr:us-east-1:jenkins-aws-beanstalk') {
-                        dockerImage.push("$BUILD_NUMBER")
+                        dockerImage.push("${repo_url}" + ":$BUILD_NUMBER")
                     }
                 }
             }
