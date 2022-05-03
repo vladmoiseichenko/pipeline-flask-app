@@ -30,13 +30,12 @@ pipeline {
                 }
             }
         }
-        stage('Docker prune') {
+        stage('Docker run') {
             steps {
                 script {
-                    sh 'docker system prune -af'
+                    sh 'docker run -d -p 5000:5000 --rm --name flask ${repo_url}/"$repo_name":${BUILD_NUMBER}'
                 }
             }
         }
     }
 }
-   
