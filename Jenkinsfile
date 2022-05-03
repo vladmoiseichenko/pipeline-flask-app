@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${repo_url}'
-                    sh 'docker push ${repo_url}/demo:${BUILD_NUMBER}'
+                    sh 'docker push ${repo_url}/app:${BUILD_NUMBER}'
                 }
             }
         }
