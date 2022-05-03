@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        repo_url = "https://748376254287.dkr.ecr.us-east-1.amazonaws.com/repo"
+        repo_url = "https://748376254287.dkr.ecr.us-east-1.amazonaws.com"
     }
     
     agent any
@@ -19,11 +19,11 @@ pipeline {
                 echo 'asd'
             }
         }
-        stage('Deploy') {
+        stage('Push to ECR') {
             steps {
                 script {
-                    docker.withRegistry("${repo_url}", 'ecr:us-east-1:jenkins-aws-beanstalk') {
-                        dockerImage.push("repo:$BUILD_NUMBER")
+                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${repo_url}'
+                    sh 'docker push ${repo_url}/demo:${BUILD_NUMBER}'
                     }
                 }
             }
