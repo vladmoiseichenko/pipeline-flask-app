@@ -16,9 +16,9 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
+        stage('Some tests') {
             steps {
-                echo 'asd'
+                echo 'Testing..'
             }
         }
         stage('Push to ECR') {
@@ -30,12 +30,12 @@ pipeline {
                 }
             }
         }
+        stage('Clear images') {
+            steps {
+                script {
+                    sh 'docker image prune -af'
+                }
+            }
+        }
     }
 }
-
-
-// Your Jenkins credential ID - "jenkins-aws-beanstalk"
-// repo_url = "748376254287.dkr.ecr.us-east-1.amazonaws.com/repo"
-// 
-
-// docker tag dockerImage "${repo_url}" + ":$BUILD_NUMBER"
