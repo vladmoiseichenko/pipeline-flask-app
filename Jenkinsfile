@@ -30,10 +30,10 @@ pipeline {
                 }
             }
         }
-        stage('Clear images') {
+        stage('Docker prune') {
             steps {
                 script {
-                    sh 'docker image prune -af'
+                    sh 'docker system prune -af'
                 }
             }
         }
