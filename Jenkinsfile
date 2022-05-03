@@ -8,6 +8,13 @@ pipeline {
     agent any
 
     stages {
+        stage('Stop all containers before run') {
+            steps {
+                script {
+                    sh 'docker stop $(docker ps -a -q)'
+                }
+            }
+        }
         stage('Create docker image') {
             steps {
                 echo 'Creating..'
