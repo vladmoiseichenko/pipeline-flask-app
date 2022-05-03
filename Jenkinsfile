@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        repo_url = "https://748376254287.dkr.ecr.us-east-1.amazonaws.com"
+        repo_url = "748376254287.dkr.ecr.us-east-1.amazonaws.com"
         repo_name = "demo"
         app_name = "flask"
     }
